@@ -1,6 +1,10 @@
 Pipeline{
     agent any
-
+    environment {
+        APP_ARCHIVE_NAME = 'app'
+        APP_MODULE_NAME = 'android-template'
+        CHANGELOG_CMD = 'git log --date=format:"%Y-%m-%d" --pretty="format: * %s% b (%an, %cd)" | head -n 10 > commit-changelog.txt'
+    }
     stages {
          stage("Build") {
                             steps {
