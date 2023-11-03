@@ -59,6 +59,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -66,4 +67,27 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+}
+
+
+apply(plugin = "org.sonarqube")
+
+sonarqube {
+    properties {
+        property("sonar.host.url", "http://192.168.202.33:9000")
+        property("sonar.projectName", "CICDDemo")
+        property("sonar.projectKey", "CICDDemo")
+        property("sonar.language", "kotlin")
+        property("sonar.token", "squ_5eac7a3366e7bfeb09ab5335b45a392c5758f1e6")
+        property("sonar.sources", "src/main/java")
+        property("sonar.tests", "src/test/java")
+        property("sonar.test.inclusions", "**/*Test*/**")
+        property("sonar.sourceEncoding", "UTF-8")
+        property("sonar.charSet", "UTF-8")
+        property("sonar.exclusions", "**/*Test*/**," +
+                "*.json," +
+                "**/*test*/**," +
+                "**/.gradle/**," +
+                "**/R.class")
+    }
 }
