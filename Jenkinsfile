@@ -1,4 +1,4 @@
-Pipeline{
+pipeline{
     agent any
     environment {
         APP_ARCHIVE_NAME = 'app'
